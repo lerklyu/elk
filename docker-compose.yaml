@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:18
+    restart: always
+
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+    environment:
+      POSTGRES_PASSWORD: taskmanager123
+      POSTGRES_USER: taskmanager
+      POSTGRES_DB: taskmanager
+
+volumes:
+  pgdata:

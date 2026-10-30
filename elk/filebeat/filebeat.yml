@@ -1,0 +1,17 @@
+filebeat.inputs:
+  - type: filestream
+    id: taskmanager-logs
+    enabled: true
+    paths:
+      - /var/log/taskmanager/*.json
+
+    parsers:
+      - ndjson:
+          target: ""
+          overwrite_keys: true
+          add_error_key: true
+
+output.logstash:
+  hosts: ["logstash:5044"]
+
+logging.level: info
